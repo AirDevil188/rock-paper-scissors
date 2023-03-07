@@ -2,6 +2,7 @@
 let playerScore = 0;
 let computerScore = 0;
 let tiesCounter = 0;
+let gameWinner = "";
 
 
 /* prompt */
@@ -18,7 +19,7 @@ function getComputerChoice() {
 
 function playOneRound(playerSelection, computerSelection) {
 
-    let tie = `It's a tie! You chose ${playerSelection} and the computer chose ${computerSelection}.`;
+    let tie = `It's a tie! You have chosen ${playerSelection} and the computer have chosen ${computerSelection}.`;
     let playerWin = `You win! Your ${playerSelection} beats the computer's ${computerSelection}.`;
     let computerWin = `You lose! The computer's ${computerSelection} beats your ${playerSelection}.`;
 
@@ -57,24 +58,27 @@ function playOneRound(playerSelection, computerSelection) {
 }
 
 
-function game() {
-    
-    for ( let i = 0; i < 5; i++) {
-        const playerSelection = prompt("What's your choice rock, paper, scissors?").toLowerCase();
-        const computerSelection = getComputerChoice();
-        playOneRound(playerSelection, computerSelection);
-    
-    }
+function game () {
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
+        addEventListener('click', () => {
+            playerSelection = button.className;
+            const computerSelection = getComputerChoice();
+
+        })
         
-    if (playerScore > computerScore) {
-        alert(`You won! The final score is: You: ${playerScore}. Computer: ${computerScore}. Ties: ${tiesCounter}.`);
-    } else if (playerScore < computerScore) {
-        alert(`You lost! The final score is: You: ${playerScore}. Computer: ${computerScore}. Ties: ${tiesCounter}.`);
-    } else {
-        alert(`It's a tie! Final score is: You: ${playerScore}. Computer: ${computerScore}. Ties: ${tiesCounter}.`);
-    }
+    });
 }
 
-
 game();
+
+
+/* DOM */
+const container = document.querySelector('#container');
+const resultDiv = document.createElement('div');
+resultDiv.classList.add('result-div');
+resultDiv.style.color = "black";
+container.appendChild(resultDiv);
+
+
 
