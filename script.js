@@ -122,8 +122,9 @@ function endGame() {
         }
         const playAgainButton = document.createElement('button');
         playAgainButton.textContent = "Play Again!";
-        playAgainButton.addEventListener('click', reloadPage);
-        reloadPage = () => playAgainButton = location.reload();
+        playAgainButton.addEventListener('click', (reloadPage) => { 
+            reloadPage = playAgainButton = location.reload();
+        });
         resultContainer.appendChild(playAgainButton);
 
         
@@ -136,8 +137,10 @@ function endGame() {
         }
         const playAgainButton = document.createElement('button');
         playAgainButton.textContent = "Play Again!";
-        playAgainButton.addEventListener('click', reloadPage);
-        reloadPage = () => playAgainButton = location.reload();
+        playAgainButton.addEventListener('click', (reloadPage) => { 
+            reloadPage = playAgainButton = location.reload();
+        });
+        
         resultContainer.appendChild(playAgainButton);
 
 
