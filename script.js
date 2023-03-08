@@ -61,10 +61,13 @@ function playOneRound(playerSelection, computerSelection) {
 function game () {
     const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => {
-        addEventListener('click', () => {
+        button.addEventListener('click', () => {
             playerSelection = button.className;
             const computerSelection = getComputerChoice();
-
+            gameText.textContent = playOneRound(playerSelection, computerSelection);
+            playerRoundWinText.textContent = "Player total score: " + playerScore;
+            computerRoundWinText.textContent = "Computer total score: " + computerScore;
+            endGame();
         })
         
     });
@@ -74,11 +77,48 @@ game();
 
 
 /* DOM */
-const container = document.querySelector('#container');
-const resultDiv = document.createElement('div');
-resultDiv.classList.add('result-div');
-resultDiv.style.color = "black";
-container.appendChild(resultDiv);
+
+// result-container //
+const resultContainer = document.createElement('div');
+resultContainer.classList.add('result-div');
+resultContainer.setAttribute('style', 'display: flex; flexDirection: column;')
+container.appendChild(resultContainer);
+
+// game-text //
+const gameText = document.createElement('p');
+gameText.classList.add('game-text');
+gameText.style.color = "black";
+resultContainer.appendChild(gameText)
+
+// player-win-score //
+
+const playerRoundWinText = document.createElement('p');
+playerRoundWinText.classList.add("player-win-text")
+playerRoundWinText.style.color = "green";
+resultContainer.appendChild(playerRoundWinText);
+
+// computer-win-score //
+
+const computerRoundWinText = document.createElement('p');
+computerRoundWinText.classList.add("computer-win-text");
+computerRoundWinText.style.color = "red";
+resultContainer.appendChild(computerRoundWinText);
+
+// game-win //
+
+const gameWin = document.createElement('p');
+gameWin.style.color = "orange";
+resultContainer.appendChild(gameWin);
 
 
+function endGame() {
+    if (playerScore === 5) {
+        gameWinner = gameWin
+        gameWin.textContent = "YOU WON!!"
+    } else if (computerScore === 5) {
+        gameWinner = gameWin;
+        gameWin.textContent = "You lost, computer won the game!"
+
+    }
+}
 
