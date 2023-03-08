@@ -2,7 +2,7 @@
 let playerScore = 0;
 let computerScore = 0;
 let tiesCounter = 0;
-let gameWinner = "";
+const buttons = document.querySelectorAll("button");
 
 
 /* prompt */
@@ -11,8 +11,8 @@ let gameWinner = "";
 /* function for random choice made by the computer */
 
 function getComputerChoice() {
-    let array1 = ["rock", "paper", "scissors"]
-    let possibleChoice = array1[Math.floor(Math.random() * array1.length)]
+    let rockPaperScissors = ["rock", "paper", "scissors"]
+    let possibleChoice = rockPaperScissors[Math.floor(Math.random() * rockPaperScissors.length)]
     return possibleChoice;
          
 }
@@ -59,7 +59,6 @@ function playOneRound(playerSelection, computerSelection) {
 
 
 function game () {
-    const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             playerSelection = button.className;
@@ -81,13 +80,14 @@ game();
 // result-container //
 const resultContainer = document.createElement('div');
 resultContainer.classList.add('result-div');
-resultContainer.setAttribute('style', 'display: flex; flexDirection: column;')
+resultContainer.style.flex = "flex-direction: column; justify-content: center; align-items: center;"
 container.appendChild(resultContainer);
 
 // game-text //
 const gameText = document.createElement('p');
 gameText.classList.add('game-text');
-gameText.style.color = "black";
+gameText.setAttribute('style','font-size: 3em;');
+gameText.style.fontFamily = "Comic Sans MS, Chalkboard SE, Comic Neue, sans-serif";
 resultContainer.appendChild(gameText)
 
 // player-win-score //
@@ -107,18 +107,41 @@ resultContainer.appendChild(computerRoundWinText);
 // game-win //
 
 const gameWin = document.createElement('p');
-gameWin.style.color = "orange";
+gameWin.setAttribute('style', 'text-align: center; color: orange;');
 resultContainer.appendChild(gameWin);
 
 
+
+// game end function //
+
 function endGame() {
     if (playerScore === 5) {
-        gameWinner = gameWin
-        gameWin.textContent = "YOU WON!!"
+        gameWin.textContent = "YOU WON!!";
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].disabled = true;
+        }
+        const playAgainButton = document.createElement('button');
+        playAgainButton.textContent = "Play Again!";
+        playAgainButton.addEventListener('click', reloadPage);
+        reloadPage = () => playAgainButton = location.reload();
+        resultContainer.appendChild(playAgainButton);
+
+        
+
+
     } else if (computerScore === 5) {
-        gameWinner = gameWin;
         gameWin.textContent = "You lost, computer won the game!"
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].disabled = true;
+        }
+        const playAgainButton = document.createElement('button');
+        playAgainButton.textContent = "Play Again!";
+        playAgainButton.addEventListener('click', reloadPage);
+        reloadPage = () => playAgainButton = location.reload();
+        resultContainer.appendChild(playAgainButton);
+
 
     }
+    
+    
 }
-
