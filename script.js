@@ -21,8 +21,8 @@ function getComputerChoice() {
 function playOneRound(playerSelection, computerSelection) {
 
     let tie = `It's a tie! Both of you selected ${playerSelection}.`;
-    let playerWin = `You win! Your ${playerSelection} beats the computer's ${computerSelection}.`;
-    let computerWin = `You lose! The computer's ${computerSelection} beats your ${playerSelection}.`;
+    let playerWin = `You win! You have selected: ${playerSelection} while computer had selected: ${computerSelection}.`;
+    let computerWin = `You lose! Computer has selected: ${computerSelection} while you had selected: ${playerSelection}.`;
 
     if (playerSelection === computerSelection) {
         console.log(tie)
