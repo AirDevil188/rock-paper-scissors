@@ -5,7 +5,6 @@ let tiesCounter = 0;
 const buttons = document.querySelectorAll("button");
 
 
-/* prompt */
 
 
 /* function for random choice made by the computer */
@@ -17,9 +16,11 @@ function getComputerChoice() {
          
 }
 
+// function for playing one round //
+
 function playOneRound(playerSelection, computerSelection) {
 
-    let tie = `It's a tie! You have chosen ${playerSelection} and the computer have chosen ${computerSelection}.`;
+    let tie = `It's a tie! Both of you selected ${playerSelection}.`;
     let playerWin = `You win! Your ${playerSelection} beats the computer's ${computerSelection}.`;
     let computerWin = `You lose! The computer's ${computerSelection} beats your ${playerSelection}.`;
 
@@ -57,6 +58,7 @@ function playOneRound(playerSelection, computerSelection) {
 
 }
 
+// game function //
 
 function game () {
     buttons.forEach((button) => {
@@ -87,8 +89,7 @@ container.appendChild(resultContainer);
 const gameText = document.createElement('p');
 gameText.classList.add('game-text');
 gameText.setAttribute('style','font-size: 3em;');
-gameText.style.fontFamily = "Comic Sans MS, Chalkboard SE, Comic Neue, sans-serif";
-resultContainer.appendChild(gameText)
+resultContainer.appendChild(gameText);
 
 // player-win-score //
 
@@ -110,9 +111,10 @@ const gameWin = document.createElement('p');
 gameWin.setAttribute('style', 'text-align: center; color: orange;');
 resultContainer.appendChild(gameWin);
 
+// play-again-button //
+const playAgainButton = document.createElement('button');
 
-
-// game end function //
+// game-end function //
 
 function endGame() {
     if (playerScore === 5) {
@@ -120,7 +122,6 @@ function endGame() {
         for (let i = 0; i < buttons.length; i++) {
             buttons[i].disabled = true;
         }
-        const playAgainButton = document.createElement('button');
         playAgainButton.textContent = "Play Again!";
         playAgainButton.addEventListener('click', (reloadPage) => { 
             reloadPage = playAgainButton = location.reload();
@@ -131,16 +132,14 @@ function endGame() {
 
 
     } else if (computerScore === 5) {
-        gameWin.textContent = "You lost, computer won the game!"
+        gameWin.textContent = "YOU LOST! Computer won the game!"
         for (let i = 0; i < buttons.length; i++) {
             buttons[i].disabled = true;
         }
-        const playAgainButton = document.createElement('button');
         playAgainButton.textContent = "Play Again!";
         playAgainButton.addEventListener('click', (reloadPage) => { 
             reloadPage = playAgainButton = location.reload();
         });
-        
         resultContainer.appendChild(playAgainButton);
 
 

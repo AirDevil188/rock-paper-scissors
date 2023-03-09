@@ -6,25 +6,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-button {
-    margin: 5px;
-}
-
-h1 {
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.play-buttons {
-    display: flex;
-    flex-direction: row;
-
+    background-color: #212;
 }
 
 #container {
@@ -36,3 +18,55 @@ h1 {
     align-self: center;
     text-align: center;
 }
+
+h1 {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: 'CARTOON FREE', sans-serif;
+    font-size: 3em;
+    color: orange;
+}
+
+p {
+    font-family: 'CARTOON FREE', sans-serif;
+}
+
+button {
+    background-color: orange;
+    color: #212;
+    font-size: 2em;
+    font-family: 'CARTOON FREE', sans-serif;
+    border: 5px solid white;
+    margin: 15px;
+    padding: 10px 40px;
+    border-radius: 50px;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+button:hover {
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24), 0 10px 20px 0 rgba(0,0,0,0.19);
+    opacity: 1;
+}
+
+
+
+.game-text {
+    color: white;
+}
+
+
+.play-buttons {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
